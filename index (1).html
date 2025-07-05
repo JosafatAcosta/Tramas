@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Webpage - Portafolio/Publicaciones</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Mi Webpage</h1>
+    <nav>
+      <a href="#home" onclick="showSection('home')">Inicio</a>
+      <a href="#publicaciones" onclick="showSection('publicaciones')">Publicaciones</a>
+      <a href="#herramientas" onclick="showSection('herramientas')">Herramientas</a>
+      <a href="#enlaces" onclick="showSection('enlaces')">Enlaces</a>
+    </nav>
+  </header>
+  <main>
+    <section id="home" class="section active">
+      <h2>Bienvenido a mi sitio</h2>
+      <p>¡Hola! Aquí encontrarás mis publicaciones, herramientas útiles y enlaces recomendados.</p>
+    </section>
+    <section id="publicaciones" class="section">
+      <h2>Publicaciones</h2>
+      <ul>
+        <li><strong>Publicación 1</strong> — <a href="#">Ver más</a></li>
+        <li><strong>Publicación 2</strong> — <a href="#">Ver más</a></li>
+        <li><strong>Publicación 3</strong> — <a href="#">Ver más</a></li>
+      </ul>
+    </section>
+    <section id="herramientas" class="section">
+      <h2>Herramientas HTML</h2>
+      <ul>
+        <li><a href="https://www.w3schools.com/html/html_editors.asp" target="_blank">Editor HTML en línea</a></li>
+        <li><a href="https://codepen.io/" target="_blank">CodePen</a></li>
+        <li><a href="https://jsfiddle.net/" target="_blank">JSFiddle</a></li>
+      </ul>
+    </section>
+    <section id="enlaces" class="section">
+      <h2>Enlaces recomendados</h2>
+      <ul>
+        <li><a href="https://github.com/" target="_blank">GitHub</a></li>
+        <li><a href="https://developer.mozilla.org/es/" target="_blank">MDN Web Docs</a></li>
+        <li><a href="https://webflow.com/" target="_blank">Webflow</a></li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p>Creado por [Tu Nombre] &copy; 2025</p>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>
