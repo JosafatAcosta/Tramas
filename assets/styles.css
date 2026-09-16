@@ -1,0 +1,163 @@
+:root{
+  --navy:#1B2A41;
+  --navy-soft:#4A5B70;
+  --paper:#FAF9F6;
+  --paper-alt:#F1EEE6;
+  --card:#FFFFFF;
+  --rule:#DED9CC;
+  --thread-red:#B23A2E;
+  --thread-gold:#B98C2E;
+  --thread-olive:#748049;
+  --focus:#2F5E8C;
+  --font-display:'Fraunces', Georgia, serif;
+  --font-body:'Work Sans', system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --navy:#E7ECF3; --navy-soft:#AEB9C6; --paper:#12181F; --paper-alt:#1A222B;
+    --card:#1D2530; --rule:#323C48; --thread-red:#E0776A; --thread-gold:#D8B15C;
+    --thread-olive:#9CAD73; --focus:#7FB0E0;
+  }
+}
+:root[data-theme="dark"]{
+  --navy:#E7ECF3; --navy-soft:#AEB9C6; --paper:#12181F; --paper-alt:#1A222B;
+  --card:#1D2530; --rule:#323C48; --thread-red:#E0776A; --thread-gold:#D8B15C;
+  --thread-olive:#9CAD73; --focus:#7FB0E0;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;}
+body{
+  background:var(--paper);
+  color:var(--navy);
+  font-family:var(--font-body);
+  line-height:1.65;
+  font-size:17px;
+}
+a{color:var(--navy); text-decoration-color:var(--thread-gold); text-underline-offset:3px;}
+a:hover{text-decoration-color:var(--thread-red);}
+:focus-visible{outline:2px solid var(--focus); outline-offset:2px;}
+img{max-width:100%; display:block;}
+h1,h2,h3{font-family:var(--font-display); font-weight:600; line-height:1.2; color:var(--navy);}
+h1{font-size:2.1rem;}
+h2{font-size:1.5rem; margin-top:2.5rem;}
+h3{font-size:1.15rem;}
+p{margin:0 0 1rem;}
+.wrap{max-width:880px; margin:0 auto; padding:0 1.4rem;}
+
+/* ---- quick exit ---- */
+.quick-exit{
+  position:fixed; top:0.8rem; right:0.9rem; z-index:50;
+  background:var(--thread-red); color:#fff; border:none;
+  font-family:var(--font-body); font-weight:600; font-size:0.82rem;
+  padding:0.5rem 0.9rem; border-radius:999px; cursor:pointer;
+  box-shadow:0 1px 4px rgba(0,0,0,0.25);
+}
+.quick-exit:hover{filter:brightness(0.92);}
+
+/* ---- header / nav ---- */
+header.site-head{
+  border-bottom:1px solid var(--rule);
+  background:var(--paper);
+}
+.head-inner{
+  max-width:880px; margin:0 auto; padding:1.1rem 1.4rem;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+}
+.brand{display:flex; align-items:center; gap:0.7rem; text-decoration:none;}
+.brand__logo{
+  background:#fff; border-radius:8px; padding:5px 8px;
+  box-shadow:0 0 0 1px var(--rule);
+}
+.brand__logo img{height:34px; width:auto;}
+nav.mainnav{display:flex; gap:1.4rem; flex-wrap:wrap;}
+nav.mainnav a{
+  font-size:0.92rem; font-weight:600; text-decoration:none; color:var(--navy-soft);
+  padding-bottom:2px; border-bottom:2px solid transparent;
+}
+nav.mainnav a:hover{color:var(--navy);}
+nav.mainnav a[aria-current="page"]{color:var(--navy); border-bottom-color:var(--thread-gold);}
+
+/* ---- hero ---- */
+.hero{padding:3rem 0 2rem; position:relative; overflow:hidden;}
+.hero__tag{
+  display:inline-block; font-family:var(--font-body); font-weight:600; font-size:0.8rem;
+  letter-spacing:0.06em; text-transform:uppercase; color:var(--thread-olive);
+  border:1px solid var(--thread-olive); padding:0.25rem 0.7rem; border-radius:999px;
+  margin-bottom:1rem;
+}
+.hero h1{max-width:16ch;}
+.hero__lead{font-size:1.15rem; color:var(--navy-soft); max-width:52ch;}
+
+/* ---- knot motif (decorative, echoes the logo's node-and-thread mark) ---- */
+.knot{position:absolute; opacity:0.5; pointer-events:none;}
+.knot--hero{right:-40px; top:-10px; width:220px;}
+
+/* ---- cards / grid ---- */
+.grid{display:grid; gap:1.1rem; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); margin:1.5rem 0 2.5rem;}
+.card{
+  background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:1.3rem 1.4rem;
+  border-top:3px solid var(--thread-gold);
+}
+.card:nth-child(3n+2){border-top-color:var(--thread-red);}
+.card:nth-child(3n+3){border-top-color:var(--thread-olive);}
+.card h3{margin-top:0;}
+.card p{margin-bottom:0; color:var(--navy-soft); font-size:0.95rem;}
+
+/* ---- service blocks ---- */
+.service{
+  border-left:3px solid var(--thread-gold);
+  padding:0.2rem 0 0.2rem 1.1rem; margin-bottom:2rem;
+}
+.service:nth-child(3n+2){border-left-color:var(--thread-red);}
+.service:nth-child(3n+3){border-left-color:var(--thread-olive);}
+.service h3{margin-top:0;}
+.note{
+  background:var(--paper-alt); border:1px solid var(--rule); border-radius:6px;
+  padding:0.9rem 1.1rem; font-size:0.92rem; color:var(--navy-soft); margin-top:0.8rem;
+}
+
+/* ---- buttons ---- */
+.btn{
+  display:inline-block; font-family:var(--font-body); font-weight:700; font-size:0.95rem;
+  background:var(--navy); color:var(--paper); text-decoration:none;
+  padding:0.7rem 1.3rem; border-radius:4px; border:none; cursor:pointer;
+}
+.btn:hover{background:var(--thread-red); color:#fff;}
+.btn--ghost{background:none; color:var(--navy); border:1px solid var(--rule);}
+.btn--ghost:hover{border-color:var(--navy); background:none; color:var(--navy);}
+.cta-row{display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:1.2rem;}
+
+/* ---- contact ---- */
+.contact-list{list-style:none; padding:0; margin:1.2rem 0;}
+.contact-list li{
+  display:flex; gap:0.8rem; align-items:baseline; padding:0.7rem 0; border-bottom:1px dotted var(--rule);
+}
+.contact-list dt{font-weight:700; min-width:6.5rem; color:var(--navy-soft); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.03em;}
+
+/* ---- red de acompañamiento ---- */
+#colaboradores-list{list-style:none; padding:0; margin:1.5rem 0;}
+#colaboradores-list li{
+  padding:0.9rem 1rem; margin-bottom:0.7rem; background:var(--card);
+  border:1px solid var(--rule); border-radius:6px;
+}
+#colaboradores-list .rol{color:var(--navy-soft); font-size:0.88rem;}
+.empty{color:var(--navy-soft); font-style:italic;}
+
+/* ---- footer ---- */
+footer.site-foot{
+  margin-top:3rem; border-top:1px solid var(--rule); background:var(--paper-alt);
+}
+.foot-inner{
+  max-width:880px; margin:0 auto; padding:2rem 1.4rem;
+  display:flex; justify-content:space-between; gap:2rem; flex-wrap:wrap;
+}
+.foot-inner .brand__logo img{height:28px;}
+.foot-col h4{font-family:var(--font-body); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--navy-soft); margin:0 0 0.6rem;}
+.foot-col a{display:block; font-size:0.92rem; margin-bottom:0.4rem; text-decoration:none;}
+.foot-legal{max-width:880px; margin:0 auto; padding:0 1.4rem 1.6rem; font-size:0.78rem; color:var(--navy-soft);}
+
+@media (max-width:640px){
+  .head-inner{flex-direction:column; align-items:flex-start;}
+  nav.mainnav{gap:1rem;}
+  .hero{padding-top:3.5rem;}
+}

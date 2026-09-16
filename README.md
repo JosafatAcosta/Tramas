@@ -1,37 +1,73 @@
-# Registro de constancias
+# Sitio de Tramas Escucha a Víctimas de Violencia, A.C.
 
-Sitio estático para verificar constancias con folio y código QR. Sin backend,
-sin base de datos: la fuente de la verdad es `data.json`, que tú editas y
-subes a GitHub; Vercel redespliega automáticamente en cada `git push`.
+Sitio estático (sin backend) para GitHub Pages. Páginas: Inicio, Quiénes
+somos, Qué hacemos, Círculos de Formación, Red de acompañamiento, Contacto,
+y un verificador de constancias con folio + QR en `/constancias/`.
+
+## Cómo incorporarlo a tu repositorio `Tramas`
+
+1. Copia el contenido de esta carpeta (todo lo que ves aquí) dentro de tu
+   repositorio local, en la raíz (junto a donde ya tienes tus archivos).
+   Si ya tenías un `index.html` propio, revisa que no se sobrescriba algo
+   que quieras conservar.
+2. Confirma en GitHub → tu repo → **Settings → Pages** que la fuente sea
+   la rama `main` y carpeta `/ (root)`. Si tu Pages está configurado para
+   `/docs` o una rama `gh-pages`, dímelo y ajusto las rutas.
+3. Sube los cambios:
+   ```bash
+   git add -A
+   git commit -m "Sitio de Tramas A.C."
+   git push
+   ```
+4. En un par de minutos estará en `https://josafatacosta.github.io/Tramas/`.
 
 ## Estructura
 
-- `index.html` — página pública de verificación (lee `data.json`).
-- `data.json` — el registro. `institucion` + arreglo `records`.
-- `scripts/agregar-constancia.mjs` — asistente de terminal para agregar un
-  registro, generar su folio y su código QR (PNG) sin editar el JSON a mano.
-
-## Primera vez
-
-```bash
-npm install
+```
+index.html                     Inicio
+quienes-somos.html
+servicios.html
+circulos-de-formacion.html
+red-de-acompanamiento.html
+contacto.html
+assets/
+  logo.png
+  styles.css
+  site.js
+data/
+  colaboradores.json           Lista de la Red de acompañamiento
+constancias/                   Verificador de constancias (sitio aparte, mismo dominio)
+  index.html
+  data.json                    Registro de constancias emitidas
+  scripts/agregar-constancia.mjs
 ```
 
-## Agregar una constancia
+## Agregar personas a "Red de acompañamiento"
+
+Edita `data/colaboradores.json`, es una lista simple:
+
+```json
+[
+  { "nombre": "Nombre Apellido", "rol": "Psicóloga clínica" },
+  { "nombre": "Otro Nombre", "rol": "Abogado" }
+]
+```
+
+Guarda, haz commit y push — no requiere nada más.
+
+## Agregar una constancia (Círculos de Formación)
+
+Dentro de `constancias/`:
 
 ```bash
+npm install        # solo la primera vez
 npm run agregar
 ```
 
-Te pedirá nombre, curso, horas, fecha y el dominio final del sitio. Al
-terminar:
-
-- Agrega el registro a `data.json` con un folio nuevo (`INICIALES-AÑO-0001`).
-- Guarda el QR en `qrcodes/<folio>.png`, apuntando a
-  `https://tu-dominio/?folio=<folio>` — ese PNG es el que pegas en el PDF o
-  Word de la constancia.
-
-Luego sube el cambio:
+Te pedirá nombre, curso, horas, fecha y el dominio final
+(`https://josafatacosta.github.io/Tramas`). Genera el folio, actualiza
+`constancias/data.json` y guarda el QR en `constancias/qrcodes/`. Ese PNG es
+el que pegas en el PDF/Word de la constancia. Luego:
 
 ```bash
 git add -A
@@ -39,34 +75,18 @@ git commit -m "Agrega constancia <folio>"
 git push
 ```
 
-Vercel redespliega solo en cuanto detecta el push (una vez conectado el
-repositorio — ver abajo).
+## Salida rápida
 
-## Publicar en Vercel
+Cada página tiene un botón "Salir" que redirige de inmediato a un sitio
+neutro. Es una medida de seguridad común en sitios de acompañamiento a
+víctimas de violencia — no borra el historial del navegador (eso no es
+posible desde una página web), pero saca a la persona de la vista de
+inmediato.
 
-1. Sube esta carpeta a un repositorio de GitHub (nuevo, vacío):
-   ```bash
-   git init
-   git add -A
-   git commit -m "Registro de constancias inicial"
-   git branch -M main
-   git remote add origin https://github.com/<tu-usuario>/<tu-repo>.git
-   git push -u origin main
-   ```
-2. En [vercel.com/new](https://vercel.com/new), elige "Import Git
-   Repository" y selecciona ese repositorio. No necesita configuración
-   especial: es un sitio estático, Vercel lo detecta solo.
-3. Cuando quieras, dime el nombre del repositorio ya en GitHub y puedo
-   conectarlo a tu cuenta de Vercel por ti (ya está enlazada a esta
-   conversación) usando el paso de importar proyecto Git.
-4. Una vez publicado, vuelve a correr `npm run agregar` usando ese dominio
-   real para que los QR apunten al lugar correcto.
+## Contenido pendiente de revisar
 
-## Notas
-
-- Cualquier persona con el enlace puede *consultar* un folio; nadie puede
-  editar el sitio salvo quien tiene acceso al repositorio de GitHub.
-- No incluyas datos sensibles (CURP, domicilio, etc.) en `data.json`: es un
-  archivo público una vez desplegado.
-- Esto da *verificabilidad*, no un aval oficial de ninguna autoridad
-  educativa (SEP) o laboral (STPS).
+- La sección "Quiénes somos" describe el objeto de la asociación en
+  términos generales; si quieres agregar historia, año de fundación o
+  perfiles del equipo, dime y lo integro.
+- "Red de acompañamiento" empieza vacía — agrega los nombres cuando los
+  tengas listos.
