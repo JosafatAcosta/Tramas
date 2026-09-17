@@ -1,8 +1,8 @@
 :root{
-  --color-bg:#FAF9F5;
+  --color-bg:#FFFFFF;
   --color-text:#1B2A41;
-  --color-accent:#5C6B45;
-  --color-accent-700:#46512F;
+  --color-accent:#1B2A41;
+  --color-accent-700:#0F1826;
   --color-accent-2:#A6392C;
   --color-accent-2-700:#8A2E23;
   --color-divider:#E1DDD0;
@@ -13,14 +13,14 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --color-bg:#181C16; --color-text:#EDEAE0; --color-divider:#333A2B;
-    --color-accent:#9BAE7C; --color-accent-700:#B7C79B;
+    --color-bg:#181C1F; --color-text:#EDEAE0; --color-divider:#333940;
+    --color-accent:#EDEAE0; --color-accent-700:#FFFFFF;
     --color-accent-2:#D98071; --color-accent-2-700:#E39A8D;
   }
 }
 :root[data-theme="dark"]{
-  --color-bg:#181C16; --color-text:#EDEAE0; --color-divider:#333A2B;
-  --color-accent:#9BAE7C; --color-accent-700:#B7C79B;
+  --color-bg:#181C1F; --color-text:#EDEAE0; --color-divider:#333940;
+  --color-accent:#EDEAE0; --color-accent-700:#FFFFFF;
   --color-accent-2:#D98071; --color-accent-2-700:#E39A8D;
 }
 
@@ -42,7 +42,7 @@ a:hover{color:var(--color-accent-700);}
 
 /* ---- nav ---- */
 nav.nav{display:flex; align-items:center; gap:28px; list-style:none;}
-nav.nav a{
+nav.nav a:not(.btn){
   font-family:var(--font-body); font-size:14px; font-weight:500; color:var(--color-text);
 }
 nav.nav a[aria-current="page"]:not(.btn){
